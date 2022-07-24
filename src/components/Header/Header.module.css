@@ -1,0 +1,18 @@
+.header{
+  grid-area: h;
+  background-color: rgb(208, 200, 88);
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+ header img {
+  width: 100px;
+ 
+}
+
+.text_header{
+  color: blue;
+  margin-left: 50px;
+  font-size: 50px;
+  margin-left: 100px;
+}

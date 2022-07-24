@@ -1,0 +1,19 @@
+.dialogsItems {
+    padding: 10px;
+}
+
+.fff{
+    color:blue;
+    font-size: 70px;
+    margin-bottom: 50px;
+}
+
+ .active {
+    color: white;
+    text-decoration: underline;
+    background-color: blue;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 45px; 
+    padding-left: 15px;
+}

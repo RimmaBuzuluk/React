@@ -1,0 +1,10 @@
+.mess_body{
+    background-color: rgb(202, 199, 160);
+    height: 2000px;
+    border-radius: 50px;
+    margin: 20px;
+    border-style:dotted;
+    border-color: blue;
+    border-width: 10px;
+
+}

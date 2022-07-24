@@ -1,0 +1,27 @@
+.nav{
+  grid-area: n;
+  background-color: rgb(208, 200, 88);
+  margin-right: 10px;
+  padding: 20px;
+  font-size: 50px;
+}
+
+a{
+  color:blue;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    font-size: 40px;
+}
+
+.item a.activeLink{
+  color: gold;
+}
+
+a:hover,
+a.active{
+  color: rgb(255, 255, 255);
+}
+
+
+
+
