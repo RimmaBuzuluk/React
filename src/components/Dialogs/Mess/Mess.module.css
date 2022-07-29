@@ -1,10 +1,46 @@
 .mess_body{
     background-color: rgb(202, 199, 160);
-    height: 2000px;
+    height: 1750px;
     border-radius: 50px;
     margin: 20px;
     border-style:dotted;
     border-color: blue;
     border-width: 10px;
+    position: relative;
 
+}
+
+.mess_area_1 {
+    width: 90%;
+    height: 200px;
+    border-radius: 50px;
+    bottom: 0;
+    background-color: white;
+    margin-left: 10px;
+    font-size: 50px;
+    margin-bottom: 10px;
+
+}
+
+.mess_area {
+    width: 99%;
+    height: 200px;
+   display: flex;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 10px;
+    
+}
+
+.button_item{
+    width: 10%;
+    color:#b7b220;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: blue;
+    margin-left: 5px;
+    border-radius: 50px;
+    border-color: #b7b220;
+    border-style: dotted;
+    border-width: 10px;
 }

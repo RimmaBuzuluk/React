@@ -16,8 +16,20 @@ const App = (props) => {
         <Nav />
         <div style={{ width: 2500 }}>
           <Routes>
-            <Route path="/content" element={<Content />}></Route>
-            <Route path="/dialog" element={<Dialogs />}></Route>
+            <Route
+              path="/content"
+              element={<Content posts={props.state.contenPage.posts} />}
+            ></Route>
+            <Route
+              path="/dialog"
+              element={
+                <Dialogs
+                  dialogsData={props.state.dialogsPage.dialogsData}
+                  messagesData={props.state.dialogsPage.messagesData}
+                />
+              }
+            ></Route>
+            <Route path="/dialog/:id" element={<Dialogs />}></Route>
             <Route path="/news" element={<News />}></Route>
             <Route path="/music" element={<Music />}></Route>
           </Routes>
