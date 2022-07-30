@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
   contenPage: {
     posts: [
@@ -12,8 +14,10 @@ let state = {
       { id: 3, message: "Slava Ukraine", like: "768", unlike: "0" },
       { id: 4, message: "Time to drink tea", like: "55", unlike: "22" },
       { id: 5, message: "Free Ukrain", like: "222", unlike: "2" },
-      { id: 5, message: "Putin huilo", like: "666", unlike: "25" },
+      { id: 6, message: "Putin huilo", like: "666", unlike: "25" },
     ],
+
+    newPostText: "it-kamasutra.com",
   },
 
   dialogsPage: {
@@ -33,6 +37,19 @@ let state = {
       { id: 4, friend_name: "Makron" },
     ],
   },
+};
+
+export let addPost = (postMessage) => {
+  let newPost = {
+    id: 7,
+    message: postMessage,
+    like: 0,
+    unlike: 0,
+  };
+
+  state.contenPage.posts.push(newPost);
+
+  rerenderEntireTree(state);
 };
 
 export default state;

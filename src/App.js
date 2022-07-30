@@ -7,7 +7,6 @@ import Headers from "./components/Header/Headers";
 import Music from "./components/Music/Music";
 import Nav from "./components/Navbar/Nav";
 import News from "./components/News/News";
-
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -18,7 +17,12 @@ const App = (props) => {
           <Routes>
             <Route
               path="/content"
-              element={<Content posts={props.state.contenPage.posts} />}
+              element={
+                <Content
+                  contenPage={props.state.contenPage}
+                  addPost={props.addPost}
+                />
+              }
             ></Route>
             <Route
               path="/dialog"
