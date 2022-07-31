@@ -19,7 +19,8 @@ return <div className={classes.content}>
             <Description />
             <Post addPost={props.addPost} 
             newPostText={props.contenPage.newPostText}
-            posts={props.contenPage.posts}/>
+            posts={props.contenPage.posts}
+            updateNewPostText={props.updateNewPostText}/>
             {PostElement}
             
     </div> 

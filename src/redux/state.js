@@ -39,6 +39,8 @@ let state = {
   },
 };
 
+window.state = state;
+
 export let addPost = (postMessage) => {
   let newPost = {
     id: 7,
@@ -48,6 +50,12 @@ export let addPost = (postMessage) => {
   };
 
   state.contenPage.posts.push(newPost);
+
+  rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+  state.contenPage.newPostText = newText;
 
   rerenderEntireTree(state);
 };

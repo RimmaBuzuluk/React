@@ -21,6 +21,7 @@ const App = (props) => {
                 <Content
                   contenPage={props.state.contenPage}
                   addPost={props.addPost}
+                  updateNewPostText={props.updateNewPostText}
                 />
               }
             ></Route>
