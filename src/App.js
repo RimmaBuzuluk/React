@@ -20,11 +20,11 @@ const App = (props) => {
               element={
                 <Content
                   contenPage={props.state.contenPage}
-                  addPost={props.addPost}
-                  updateNewPostText={props.updateNewPostText}
+                  dispatch={props.dispatch}
                 />
               }
             ></Route>
+
             <Route
               path="/dialog"
               element={
@@ -35,6 +35,7 @@ const App = (props) => {
               }
             ></Route>
             <Route path="/dialog/:id" element={<Dialogs />}></Route>
+
             <Route path="/news" element={<News />}></Route>
             <Route path="/music" element={<Music />}></Route>
           </Routes>

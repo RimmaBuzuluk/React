@@ -1,5 +1,9 @@
 import React from "react";
+import { addPostActionCreator, UpdateNewPostTextActionCreator } from "../../../redux/state";
 import classes from "./Post.module.css";
+
+
+
 
 const Post=(props) =>{
 
@@ -9,20 +13,21 @@ const Post=(props) =>{
      let addPost=()=>{
         
         let text =newPostElement.current.value;
-        props.addPost(text);
-        props.updateNewPostText('');
+        props.dispatch(addPostActionCreator());
+       props.updateNewPostText(' ');
  }   
 
      let onPostChange=()=>{
         let text =newPostElement.current.value;
-        props.updateNewPostText();
+        let action =UpdateNewPostTextActionCreator(text);
+        props.dispatch(action);
      }
 
 return <div className={classes.my_post}>
             <div className={classes.name_my_post}>My post</div>
             <form >
                 <textarea 
-                
+                placeholder="Enter your new post"
                 onChange={onPostChange} 
                 className={classes.pole_text} 
                 ref={newPostElement} 

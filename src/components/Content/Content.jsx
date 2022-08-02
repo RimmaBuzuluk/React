@@ -17,10 +17,10 @@ return <div className={classes.content}>
                 <img alt="" className={classes.main__img} src='https://ukraine-hotel.kiev.ua/static/img/main_slider/3.eb3c2ccdc74e.jpg' />
             </div>   
             <Description />
-            <Post addPost={props.addPost} 
+            <Post 
             newPostText={props.contenPage.newPostText}
             posts={props.contenPage.posts}
-            updateNewPostText={props.updateNewPostText}/>
+            dispatch={props.dispatch}/>
             {PostElement}
             
     </div> 

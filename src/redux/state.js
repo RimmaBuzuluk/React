@@ -1,63 +1,108 @@
-import { rerenderEntireTree } from "../render";
+const UPDATE_NEW_CONST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
+const SEND_MESSAGE = "SEND_MESSAGE";
 
-let state = {
-  contenPage: {
-    posts: [
-      { id: 0, message: "Hi, how are you?", like: "567", unlike: "2" },
-      { id: 1, message: "Добрый день, everybody", like: "776", unlike: "98" },
-      {
-        id: 2,
-        message: "London is the capital of great britain",
-        like: "762",
-        unlike: "88",
-      },
-      { id: 3, message: "Slava Ukraine", like: "768", unlike: "0" },
-      { id: 4, message: "Time to drink tea", like: "55", unlike: "22" },
-      { id: 5, message: "Free Ukrain", like: "222", unlike: "2" },
-      { id: 6, message: "Putin huilo", like: "666", unlike: "25" },
-    ],
+let store = {
+  _state: {
+    contenPage: {
+      posts: [
+        { id: 0, message: "Hi, how are you?", like: "567", unlike: "2" },
+        { id: 1, message: "Добрый день, everybody", like: "776", unlike: "98" },
+        {
+          id: 2,
+          message: "London is the capital of great britain",
+          like: "762",
+          unlike: "88",
+        },
+        { id: 3, message: "Slava Ukraine", like: "768", unlike: "0" },
+        { id: 4, message: "Time to drink tea", like: "55", unlike: "22" },
+        { id: 5, message: "Free Ukrain", like: "222", unlike: "2" },
+        { id: 6, message: "Putin huilo", like: "666", unlike: "25" },
+      ],
 
-    newPostText: "it-kamasutra.com",
+      newPostText: "",
+    },
+
+    dialogsPage: {
+      messagesData: [
+        { id_m: 1, messages: "Hi" },
+        { id_m: 2, messages: "How is your it-kamasutra?" },
+        { id_m: 3, messages: "Yo" },
+        { id_m: 4, messages: "Добрий день, everybody" },
+        { id_m: 5, messages: "Boris" },
+      ],
+
+      dialogsData: [
+        { id: 0, friend_name: "Zelenski Volodya" },
+        { id: 1, friend_name: "Baiden Jo" },
+        { id: 2, friend_name: "Duda Andjey" },
+        { id: 3, friend_name: "Quin" },
+        { id: 4, friend_name: "Makron" },
+      ],
+      newMessageBody: "",
+    },
   },
 
-  dialogsPage: {
-    messagesData: [
-      { id_m: 1, messages: "Hi" },
-      { id_m: 2, messages: "How is your it-kamasutra?" },
-      { id_m: 3, messages: "Yo" },
-      { id_m: 4, messages: "Добрий день, everybody" },
-      { id_m: 5, messages: "Boris" },
-    ],
+  getState() {
+    return this._state;
+  },
 
-    dialogsData: [
-      { id: 0, friend_name: "Zelenski Volodya" },
-      { id: 1, friend_name: "Baiden Jo" },
-      { id: 2, friend_name: "Duda Andjey" },
-      { id: 3, friend_name: "Quin" },
-      { id: 4, friend_name: "Makron" },
-    ],
+  _callSubscriber() {
+    console.log("state is changed");
+  },
+
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 7,
+        message: this._state.contenPage.newPostText,
+        like: 0,
+        unlike: 0,
+      };
+
+      this._state.contenPage.posts.push(newPost);
+      this._state.contenPage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.contenPage.newPostText = action.newText;
+
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE_NEW_MESSAGE_BODY") {
+      this._state.dialogsPage.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    } else if (action.type === "SEND_MESSAGE") {
+      let body = this._state.dialogsPage.newMessageBody;
+      this._state.dialogsPage.newMessageBody = "";
+
+      this._state.dialogsPage.messagesData.push({
+        id_m: 6,
+        messages: body,
+      });
+
+      this._callSubscriber(this._state);
+    }
   },
 };
 
-window.state = state;
+export const addPostActionCreator = () => ({ type: ADD_POST });
 
-export let addPost = (postMessage) => {
-  let newPost = {
-    id: 7,
-    message: postMessage,
-    like: 0,
-    unlike: 0,
-  };
+export const UpdateNewPostTextActionCreator = (text) => ({
+  type: UPDATE_NEW_CONST_TEXT,
+  newText: text,
+});
 
-  state.contenPage.posts.push(newPost);
+export const sendMessegeCreator = () => ({ type: SEND_MESSAGE });
 
-  rerenderEntireTree(state);
-};
+export const updateNewMessageBodyCreator = (body) => ({
+  type: UPDATE_NEW_MESSAGE_BODY,
+  newText: body,
+});
 
-export let updateNewPostText = (newText) => {
-  state.contenPage.newPostText = newText;
+export default store;
 
-  rerenderEntireTree(state);
-};
-
-export default state;
+window.store = store;
