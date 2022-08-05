@@ -31,10 +31,24 @@ const App = (props) => {
                 <Dialogs
                   dialogsData={props.state.dialogsPage.dialogsData}
                   messagesData={props.state.dialogsPage.messagesData}
+                  dialogsPage={props.state}
+                  dispatch={props.dispatch}
+                  store={props.store}
                 />
               }
             ></Route>
-            <Route path="/dialog/:id" element={<Dialogs />}></Route>
+            <Route
+              path="/dialog/:id"
+              element={
+                <Dialogs
+                  dialogsData={props.state.dialogsPage.dialogsData}
+                  messagesData={props.state.dialogsPage.messagesData}
+                  dialogsPage={props.state}
+                  dispatch={props.dispatch}
+                  store={props.store}
+                />
+              }
+            ></Route>
 
             <Route path="/news" element={<News />}></Route>
             <Route path="/music" element={<Music />}></Route>
