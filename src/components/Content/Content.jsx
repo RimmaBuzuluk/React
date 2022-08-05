@@ -24,6 +24,7 @@ const Content = (props) => {
         />
       </div>
       <Description />
+
       <Post
         addPost={props.addPost}
         newPostText={props.contenPage.newPostText}

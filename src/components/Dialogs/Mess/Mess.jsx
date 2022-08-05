@@ -13,7 +13,7 @@ const Mess = (props) => {
   ));
   let newMessageBody = state.newMessageBody;
 
-  // let newMessElement = React.createRef();
+  let newMessElement = React.createRef();
   ///////////////////////////
   let onSendMessageClick = () => {
     props.store.dispatch(sendMessegeCreator());
@@ -21,6 +21,7 @@ const Mess = (props) => {
   let onNewMessageChange = (e) => {
     let body = e.target.value;
     props.store.dispatch(updateNewMessageBodyCreator(body));
+    console.log(body);
   };
 
   ////////////////////////////////////
@@ -31,7 +32,7 @@ const Mess = (props) => {
       <div className={classes.mess_area}>
         <textarea
           className={classes.mess_area_1}
-          //ref={newMessElement}
+          ref={newMessElement}
           value={newMessageBody}
           onChange={onNewMessageChange}
         ></textarea>
