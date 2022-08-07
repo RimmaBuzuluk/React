@@ -3,7 +3,7 @@ import classes from "./Post.module.css";
 import {
   addPostActionCreator,
   UpdateNewPostTextActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/content-reducer";
 
 const Post = (props) => {
   let newPostElement = React.createRef();

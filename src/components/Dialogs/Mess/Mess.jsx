@@ -4,7 +4,7 @@ import classes from "./Mess.module.css";
 import {
   updateNewMessageBodyCreator,
   sendMessegeCreator,
-} from "../../../redux/state";
+} from "../../../redux/dialogs-reducer";
 
 const Mess = (props) => {
   let state = props.store.getState().dialogsPage;

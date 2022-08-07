@@ -1,7 +1,5 @@
-const UPDATE_NEW_CONST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
-const SEND_MESSAGE = "SEND_MESSAGE";
+import contentReducer from "./content-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
   _state: {
@@ -57,51 +55,12 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "ADD-POST") {
-      let newPost = {
-        id: 7,
-        message: this._state.contenPage.newPostText,
-        like: 0,
-        unlike: 0,
-      };
+    this._state.contenPage = contentReducer(this._state.contenPage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-      this._state.contenPage.posts.push(newPost);
-      this._state.contenPage.newPostText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-      this._state.contenPage.newPostText = action.newText;
-
-      this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE_NEW_MESSAGE_BODY") {
-      this._state.dialogsPage.newMessageBody = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === "SEND_MESSAGE") {
-      let body = this._state.dialogsPage.newMessageBody;
-      this._state.dialogsPage.newMessageBody = "";
-
-      this._state.dialogsPage.messagesData.push({
-        id_m: 6,
-        messages: body,
-      });
-
-      this._callSubscriber(this._state);
-    }
+    this._callSubscriber(this._state);
   },
 };
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-
-export const UpdateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_CONST_TEXT,
-  newText: text,
-});
-
-export const sendMessegeCreator = () => ({ type: SEND_MESSAGE });
-
-export const updateNewMessageBodyCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  newText: body,
-});
 
 export default store;
 
